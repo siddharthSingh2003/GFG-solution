@@ -14,27 +14,31 @@ class Solution
     public:
     int peakElement(int arr[], int n)
     {
-       // Your code here
-       int low = 0, high = n - 1;
+       // Your code 
+       
+        if (n == 1)
+            return 0;
 
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-
-            // Check if mid is a peak
-            if ((mid == 0 || arr[mid - 1] <= arr[mid]) && (mid == n - 1 || arr[mid + 1] <= arr[mid])) {
-                return mid;
+        for (int i = 0; i < n; i++)
+        {      
+            if (i == 0)
+            {
+                if (arr[i] >= arr[i + 1])
+                    return i;
             }
-
-            // If the element to the right is greater, move to the right
-            if (mid < n - 1 && arr[mid] < arr[mid + 1]) {
-                low = mid + 1;
+            else if (i == n - 1)
+            {
+                if (arr[i] >= arr[i - 1])
+                    return i;
             }
-            // Otherwise, move to the left
-            else {
-                high = mid - 1;
+            else
+            {
+                if (arr[i] >= arr[i - 1] && arr[i] >= arr[i + 1])
+                    return i;
             }
         }
 
+        // If no peak element is found, return -1.
         return -1;
     }
 };
