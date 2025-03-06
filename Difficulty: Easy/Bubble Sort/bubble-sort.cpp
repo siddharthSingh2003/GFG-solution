@@ -12,7 +12,17 @@ class Solution {
     // Function to sort the array using bubble sort algorithm.
     void bubbleSort(vector<int>& arr) {
         // Your code here
-        sort(arr.begin(), arr.end());
+        int n =arr.size();
+        
+        for (int i =0; i<n-1 ;i++){
+            for (int j=i; j<n; j++){
+                if(arr[j]<arr[i]){
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
     }
 };
 
